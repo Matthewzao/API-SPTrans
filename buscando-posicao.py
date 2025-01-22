@@ -96,7 +96,7 @@ if __name__ == "__main__":
                             # Calcular a distância do ônibus até o usuário
                             distancia_usuario = haversine(lat_usuario, lon_usuario, latitude, longitude)
 
-                            # Aqui, você pode adicionar o tempo de viagem estimado manualmente ou com base na velocidade do ônibus
+                           
                             tempo_viagem_estimado = distancia_usuario * 5  # Exemplo simples de tempo (distância * fator)
 
                             # Armazenar os dados para o treinamento do modelo
@@ -107,7 +107,7 @@ if __name__ == "__main__":
                             writer.writerow([timestamp, veiculo_id, latitude, longitude, distancia_usuario])
                             print(f"[{timestamp}] Veículo {veiculo_id}: ({latitude}, {longitude}) - Distância: {distancia_usuario:.2f} km")
 
-                    # Treinar o modelo com os dados coletados até agora
+                    # treinando o modelo com os dados coletados até agora
                     if len(distancias) > 10:  # Garantir que temos dados suficientes
                         X = np.array(distancias)
                         y = np.array(tempos_viagem)
