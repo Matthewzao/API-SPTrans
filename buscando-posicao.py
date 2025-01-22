@@ -70,9 +70,10 @@ if __name__ == "__main__":
             codigo_linha = linhas[0]["cl"]  # Código da primeira linha encontrada
             print(f"Código da linha encontrada: {codigo_linha}")
 
-            # Coordenadas do usuário (podem ser recebidas dinamicamente)
-            lat_usuario = -23.5505  # Exemplo de latitude do usuário
-            lon_usuario = -46.6333  # Exemplo de longitude do usuário
+            # Coordenadas do usuário
+            lat_usuario = -23.625017782823342
+            lon_usuario = -46.705442919411084  
+            
 
             # Criar listas para armazenar dados para treinamento
             distancias = []
