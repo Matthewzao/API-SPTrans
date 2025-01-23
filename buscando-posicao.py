@@ -3,15 +3,20 @@ import time
 import csv
 import math
 from datetime import datetime
+from dotenv import load_dotenv
+import os
 
-# Configurações da API
+load_dotenv()
+
+
+# API
 base_url = "http://api.olhovivo.sptrans.com.br/v2.1"
-token = "5bbb46f599373679c98ee76d837ac03922406b70ee12fa629645e95fb92ad02e"
+token = os.getenv("API_TOKEN")
 
 # Sessão global para manter a autenticação
 session = requests.Session()
 
-# Função para autenticar na API
+#  autenticar na API
 def autenticar():
     auth_url = f"{base_url}/Login/Autenticar?token={token}"
     auth_response = session.post(auth_url)
@@ -22,7 +27,7 @@ def autenticar():
         print("Erro na autenticação.")
         return False
 
-# Função para buscar linhas
+# buscar linhas
 def buscar_linhas(termos_busca):
     url = f"{base_url}/Linha/Buscar?termosBusca={termos_busca}"
     response = session.get(url)
@@ -36,7 +41,7 @@ def buscar_linhas(termos_busca):
         print(f"Erro ao buscar linhas: {response.status_code}")
         return None
 
-# Função para buscar posições dos ônibus de uma linha específica
+# buscar posições dos ônibus de uma linha específica
 def buscar_posicoes_linha(codigo_linha):
     url = f"{base_url}/Posicao/Linha?codigoLinha={codigo_linha}"
     response = session.get(url)
@@ -50,7 +55,7 @@ def buscar_posicoes_linha(codigo_linha):
         print(f"Erro ao buscar posições: {response.status_code}")
         return None
 
-# Função para calcular a distância entre dois pontos usando a fórmula de Haversine
+# calcular a distância entre dois pontos com fórmula Haversine
 def haversine(lat1, lon1, lat2, lon2):
     lat1, lon1, lat2, lon2 = map(math.radians, [lat1, lon1, lat2, lon2])
     dlat = lat2 - lat1
@@ -63,10 +68,10 @@ def haversine(lat1, lon1, lat2, lon2):
 
 if __name__ == "__main__":
     if autenticar():
-        termos_busca = "6291-10"  # Exemplo de número da linha
+        termos_busca = "6291-10"  # número da linha
         linhas = buscar_linhas(termos_busca)
         if linhas and len(linhas) > 0:
-            codigo_linha = linhas[0]["cl"]  # Código da primeira linha encontrada
+            codigo_linha = linhas[0]["cl"]  # primeira linha encontrada
             print(f"Código da linha encontrada: {codigo_linha}")
 
             # Coordenadas do usuário(estacao morumbi)
@@ -81,7 +86,7 @@ if __name__ == "__main__":
 
             
 
-            # Criar listas para armazenar dados para treinamento
+            # listas para armazenar dados para treinamento
             with open("posicoes_onibus.csv", mode="w", newline="", encoding="utf-8") as csvfile:
                 writer = csv.writer(csvfile)
                 writer.writerow(["DataHora", "VeiculoID", "Latitude", "Longitude", "DistanciaUsuario(km)", "DistanciaDestino(km)", "CodigoLinha"])
