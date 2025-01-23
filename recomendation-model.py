@@ -10,7 +10,7 @@ def treinar_modelo(data_file_path):
     # dados do CSV
     dados = pd.read_csv(data_file_path)
 
-    # verificanco se o CSV contém os dados esperados
+    # verificando se o CSV contém os dados esperados
     if not all(col in dados.columns for col in ["DistanciaUsuario(km)", "DistanciaDestino(km)", "CodigoLinha"]):
         raise ValueError("O arquivo CSV não contém as colunas necessárias para treinamento.")
 
