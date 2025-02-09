@@ -1,3 +1,6 @@
+![Map](C:\Users\mateu\OneDrive\Área de Trabalho\Pipeline\API-SPTrans\map.png)
+
+
 # **Projeto de Coleta de Dados e Recomendação de Linha de Ônibus**
 
 Este projeto realiza a coleta de dados de veículos de transporte público em São Paulo (SP), utilizando a API do Olho Vivo da SPTrans. Com esses dados, um modelo de machine learning (Random Forest) é treinado para recomendar a melhor linha de ônibus com base nas distâncias entre o usuário, o destino e as posições dos veículos.
