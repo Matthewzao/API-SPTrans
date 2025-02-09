@@ -4,10 +4,13 @@ import csv
 import math
 from datetime import datetime
 import folium
+from dotenv import load_dotenv
+import os
 
 # Configurações da API
 base_url = "http://api.olhovivo.sptrans.com.br/v2.1"
 token = "5bbb46f599373679c98ee76d837ac03922406b70ee12fa629645e95fb92ad02e"
+
 
 # Sessão global para manter a autenticação
 session = requests.Session()
