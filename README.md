@@ -1,4 +1,4 @@
-![Map](C:\Users\mateu\OneDrive\Área de Trabalho\Pipeline\API-SPTrans\map.png)
+
 
 
 # **Projeto de Coleta de Dados e Recomendação de Linha de Ônibus**
